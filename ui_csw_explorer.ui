@@ -155,7 +155,7 @@
      </rect>
     </property>
     <property name="toolTip">
-     <string extracomment="Enter keywords separated by a space"/>
+     <string>Enter keywords separated by a space</string>
     </property>
    </widget>
    <widget class="QSpinBox" name="maxRecordsSpinBox">
@@ -168,7 +168,7 @@
      </rect>
     </property>
     <property name="toolTip">
-     <string extracomment="Maximum records to show"/>
+     <string>Maximum records to show</string>
     </property>
     <property name="minimum">
      <number>1</number>

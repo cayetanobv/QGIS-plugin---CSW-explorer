@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'ui_csw_explorer.ui'
 #
-# Created: Sat Aug 23 23:34:28 2014
+# Created: Sat Aug 23 23:57:02 2014
 #      by: PyQt4 UI code generator 4.9.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -57,11 +57,9 @@ class Ui_CSW_Explorer(object):
         self.labelKeyword.setObjectName(_fromUtf8("labelKeyword"))
         self.keywordTxt = QtGui.QLineEdit(self.dockWidgetContents)
         self.keywordTxt.setGeometry(QtCore.QRect(90, 60, 201, 27))
-        self.keywordTxt.setToolTip(_fromUtf8(""))
         self.keywordTxt.setObjectName(_fromUtf8("keywordTxt"))
         self.maxRecordsSpinBox = QtGui.QSpinBox(self.dockWidgetContents)
         self.maxRecordsSpinBox.setGeometry(QtCore.QRect(230, 570, 60, 27))
-        self.maxRecordsSpinBox.setToolTip(_fromUtf8(""))
         self.maxRecordsSpinBox.setMinimum(1)
         self.maxRecordsSpinBox.setMaximum(1000000)
         self.maxRecordsSpinBox.setProperty("value", 50)
@@ -79,4 +77,6 @@ class Ui_CSW_Explorer(object):
         self.RecordsLabel.setText(QtGui.QApplication.translate("CSW_Explorer", "Records:", None, QtGui.QApplication.UnicodeUTF8))
         self.labelCSWURL.setText(QtGui.QApplication.translate("CSW_Explorer", "CSW", None, QtGui.QApplication.UnicodeUTF8))
         self.labelKeyword.setText(QtGui.QApplication.translate("CSW_Explorer", "Keyword(s)", None, QtGui.QApplication.UnicodeUTF8))
+        self.keywordTxt.setToolTip(QtGui.QApplication.translate("CSW_Explorer", "Enter keywords separated by a space", None, QtGui.QApplication.UnicodeUTF8))
+        self.maxRecordsSpinBox.setToolTip(QtGui.QApplication.translate("CSW_Explorer", "Maximum records to show", None, QtGui.QApplication.UnicodeUTF8))
 
