@@ -9,7 +9,7 @@ This plugin uses library OWSLib. OWSLib is a OGC Web Service utility library.
 OWSLib python library
 
 ```
-pip search OWSlib
+$ pip search OWSlib
 ```
 
 ##About author
