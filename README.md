@@ -8,9 +8,9 @@ This plugin uses library OWSLib. OWSLib is a OGC Web Service utility library.
 ##Requirements
 OWSLib python library
 
-'''
+```
 pip search OWSlib
-'''
+```
 
 ##About author
 Developed by Cayetano Benavent 2014.
