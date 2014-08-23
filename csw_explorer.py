@@ -98,12 +98,9 @@ class CSW_Explorer:
             
                 csw_list = [
                 "http://www.magrama.es/ide/metadatos/srv/es/csw?",
-                "http://www.geo-ideo.ieo.es/geoportalideo/csw/discovery?",
-                "http://www.ideandalucia.es/CDEA/srv/es/csw?",
                 "http://www.ideandalucia.es/catalogodeservicios/srv/es/csw?",
                 "http://www.juntadeandalucia.es/medioambiente/geoinspire/servicios/srv/es/csw?",
-                "http://www.fao.org/geonetwork/srv/en/csw?",
-                "http://geoportail.agriculture.gov.ma:8080/geoportal/csw/discovery?"
+                "http://www.fao.org/geonetwork/srv/en/csw?"
                 ]
         """
         

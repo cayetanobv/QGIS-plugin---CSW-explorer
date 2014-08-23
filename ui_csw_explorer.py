@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'ui_csw_explorer.ui'
 #
-# Created: Sat Aug 23 23:57:02 2014
+# Created: Sun Aug 24 00:57:45 2014
 #      by: PyQt4 UI code generator 4.9.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -35,6 +35,10 @@ class Ui_CSW_Explorer(object):
         self.comboURL.setMinimumSize(QtCore.QSize(141, 0))
         self.comboURL.setEditable(True)
         self.comboURL.setObjectName(_fromUtf8("comboURL"))
+        self.comboURL.addItem(_fromUtf8(""))
+        self.comboURL.addItem(_fromUtf8(""))
+        self.comboURL.addItem(_fromUtf8(""))
+        self.comboURL.addItem(_fromUtf8(""))
         self.CSWInfoLabel = QtGui.QLabel(self.dockWidgetContents)
         self.CSWInfoLabel.setGeometry(QtCore.QRect(10, 120, 271, 17))
         self.CSWInfoLabel.setTextFormat(QtCore.Qt.PlainText)
@@ -72,6 +76,10 @@ class Ui_CSW_Explorer(object):
     def retranslateUi(self, CSW_Explorer):
         CSW_Explorer.setWindowTitle(QtGui.QApplication.translate("CSW_Explorer", "CSW explorer", None, QtGui.QApplication.UnicodeUTF8))
         self.exploreButton.setText(QtGui.QApplication.translate("CSW_Explorer", "Explore", None, QtGui.QApplication.UnicodeUTF8))
+        self.comboURL.setItemText(0, QtGui.QApplication.translate("CSW_Explorer", "http://www.fao.org/geonetwork/srv/en/csw?", None, QtGui.QApplication.UnicodeUTF8))
+        self.comboURL.setItemText(1, QtGui.QApplication.translate("CSW_Explorer", "http://www.juntadeandalucia.es/medioambiente/geoinspire/servicios/srv/es/csw?", None, QtGui.QApplication.UnicodeUTF8))
+        self.comboURL.setItemText(2, QtGui.QApplication.translate("CSW_Explorer", "http://www.ideandalucia.es/catalogodeservicios/srv/es/csw?", None, QtGui.QApplication.UnicodeUTF8))
+        self.comboURL.setItemText(3, QtGui.QApplication.translate("CSW_Explorer", "http://www.magrama.es/ide/metadatos/srv/es/csw?", None, QtGui.QApplication.UnicodeUTF8))
         self.CSWInfoLabel.setText(QtGui.QApplication.translate("CSW_Explorer", "Waiting for a search!", None, QtGui.QApplication.UnicodeUTF8))
         self.RequestsLabel.setText(QtGui.QApplication.translate("CSW_Explorer", "Requests:", None, QtGui.QApplication.UnicodeUTF8))
         self.RecordsLabel.setText(QtGui.QApplication.translate("CSW_Explorer", "Records:", None, QtGui.QApplication.UnicodeUTF8))
