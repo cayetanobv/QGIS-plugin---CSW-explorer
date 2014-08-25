@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-/***************************************************************************
+***************************************************************************
  CSW_Explorer
  A QGIS plugin
  Retrieving info from a CSW with OWSLib
@@ -8,16 +8,16 @@
         begin                : 2014-08-16
         copyright            : (C) 2014 by Geographica
         email                : cayetano.benavent@geographica.gs
- ***************************************************************************/
+***************************************************************************
 
-/***************************************************************************
- *                                                                         *
- *   This program is free software; you can redistribute it and/or modify  *
- *   it under the terms of the GNU General Public License as published by  *
- *   the Free Software Foundation; either version 2 of the License, or     *
- *   (at your option) any later version.                                   *
- *                                                                         *
- ***************************************************************************/
+***************************************************************************
+*                                                                         *
+*   This program is free software; you can redistribute it and/or modify  *
+*   it under the terms of the GNU General Public License as published by  *
+*   the Free Software Foundation; either version 2 of the License, or     *
+*   (at your option) any later version.                                   *
+*                                                                         *
+***************************************************************************
 """
 # Import the PyQt and QGIS libraries
 from PyQt4.QtCore import *
@@ -109,7 +109,8 @@ class CSW_Explorer:
 
         cswRecords = ""
         cswRequests = ""
-
+        
+        # Get the CSW url to explore from combobox
         csw_catalog = self.dockdlg.getComboURL()
         
         if not csw_catalog:
@@ -117,17 +118,23 @@ class CSW_Explorer:
             self.changeInfoLabel("There is not a CSW URL")
         else:
             try:
+                # If there is a keyword, will be used
                 keywords = self.dockdlg.getKeyword()
+                # Set the catalog web service
                 csw = CatalogueServiceWeb(csw_catalog)
+                # Set a maximum number of records to retrieve
                 maxrecordstoshow = self.dockdlg.getMaxRecordToShow()
+                # Getting records...
                 csw.getrecords(keywords=keywords.split(), maxrecords=maxrecordstoshow)
                 
                 #osw_type = csw.identification.type
                 
                 for op in csw.operations:
+                    # listing available operations
                     cswRequests += "- %s\n" % (op.name)
                             
                 for rec in csw.records:
+                    # listing records titles
                     cswRecords += "- %s\n" % (csw.records[rec].title)
                 
                 self.changeInfoLabel("Results: %s  /  Showed: %s" % (csw.results['matches'], csw.results['returned']))
