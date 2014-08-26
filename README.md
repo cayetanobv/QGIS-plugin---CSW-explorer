@@ -7,6 +7,7 @@ This plugin uses library OWSLib. OWSLib is a OGC Web Service utility library.
 
 ##Requirements
 OWSLib python library
+https://github.com/geopython/OWSLib
 
 ```
 $ pip search OWSlib
