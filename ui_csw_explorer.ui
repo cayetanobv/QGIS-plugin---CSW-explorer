@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>312</width>
-    <height>629</height>
+    <width>304</width>
+    <height>659</height>
    </rect>
   </property>
   <property name="font">
@@ -44,6 +44,17 @@
       <height>291</height>
      </rect>
     </property>
+    <property name="maximumSize">
+     <size>
+      <width>16777215</width>
+      <height>16777215</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>8</pointsize>
+     </font>
+    </property>
    </widget>
    <widget class="QComboBox" name="comboURL">
     <property name="geometry">
@@ -65,7 +76,7 @@
     </property>
     <item>
      <property name="text">
-      <string>http://www.fao.org/geonetwork/srv/en/csw?</string>
+      <string>http://www.magrama.es/ide/metadatos/srv/es/csw?</string>
      </property>
     </item>
     <item>
@@ -80,7 +91,7 @@
     </item>
     <item>
      <property name="text">
-      <string>http://www.magrama.es/ide/metadatos/srv/es/csw?</string>
+      <string>http://www.fao.org/geonetwork/srv/en/csw?</string>
      </property>
     </item>
    </widget>
@@ -198,6 +209,19 @@
     </property>
     <property name="value">
      <number>50</number>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="exploreAllButton">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>600</y>
+      <width>281</width>
+      <height>27</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Explore all records!</string>
     </property>
    </widget>
   </widget>

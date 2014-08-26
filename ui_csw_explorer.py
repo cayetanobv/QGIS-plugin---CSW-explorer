@@ -2,8 +2,8 @@
 
 # Form implementation generated from reading ui file 'ui_csw_explorer.ui'
 #
-# Created: Sun Aug 24 00:57:45 2014
-#      by: PyQt4 UI code generator 4.9.1
+# Created: Tue Aug 26 17:06:17 2014
+#      by: PyQt4 UI code generator 4.10.3
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -12,12 +12,21 @@ from PyQt4 import QtCore, QtGui
 try:
     _fromUtf8 = QtCore.QString.fromUtf8
 except AttributeError:
-    _fromUtf8 = lambda s: s
+    def _fromUtf8(s):
+        return s
+
+try:
+    _encoding = QtGui.QApplication.UnicodeUTF8
+    def _translate(context, text, disambig):
+        return QtGui.QApplication.translate(context, text, disambig, _encoding)
+except AttributeError:
+    def _translate(context, text, disambig):
+        return QtGui.QApplication.translate(context, text, disambig)
 
 class Ui_CSW_Explorer(object):
     def setupUi(self, CSW_Explorer):
         CSW_Explorer.setObjectName(_fromUtf8("CSW_Explorer"))
-        CSW_Explorer.resize(312, 629)
+        CSW_Explorer.resize(304, 659)
         font = QtGui.QFont()
         font.setUnderline(False)
         CSW_Explorer.setFont(font)
@@ -29,6 +38,10 @@ class Ui_CSW_Explorer(object):
         self.exploreButton.setObjectName(_fromUtf8("exploreButton"))
         self.CSWRecordsTxt = QtGui.QTextBrowser(self.dockWidgetContents)
         self.CSWRecordsTxt.setGeometry(QtCore.QRect(10, 270, 281, 291))
+        self.CSWRecordsTxt.setMaximumSize(QtCore.QSize(16777215, 16777215))
+        font = QtGui.QFont()
+        font.setPointSize(8)
+        self.CSWRecordsTxt.setFont(font)
         self.CSWRecordsTxt.setObjectName(_fromUtf8("CSWRecordsTxt"))
         self.comboURL = QtGui.QComboBox(self.dockWidgetContents)
         self.comboURL.setGeometry(QtCore.QRect(50, 22, 241, 27))
@@ -68,23 +81,27 @@ class Ui_CSW_Explorer(object):
         self.maxRecordsSpinBox.setMaximum(1000000)
         self.maxRecordsSpinBox.setProperty("value", 50)
         self.maxRecordsSpinBox.setObjectName(_fromUtf8("maxRecordsSpinBox"))
+        self.exploreAllButton = QtGui.QPushButton(self.dockWidgetContents)
+        self.exploreAllButton.setGeometry(QtCore.QRect(10, 600, 281, 27))
+        self.exploreAllButton.setObjectName(_fromUtf8("exploreAllButton"))
         CSW_Explorer.setWidget(self.dockWidgetContents)
 
         self.retranslateUi(CSW_Explorer)
         QtCore.QMetaObject.connectSlotsByName(CSW_Explorer)
 
     def retranslateUi(self, CSW_Explorer):
-        CSW_Explorer.setWindowTitle(QtGui.QApplication.translate("CSW_Explorer", "CSW explorer", None, QtGui.QApplication.UnicodeUTF8))
-        self.exploreButton.setText(QtGui.QApplication.translate("CSW_Explorer", "Explore", None, QtGui.QApplication.UnicodeUTF8))
-        self.comboURL.setItemText(0, QtGui.QApplication.translate("CSW_Explorer", "http://www.fao.org/geonetwork/srv/en/csw?", None, QtGui.QApplication.UnicodeUTF8))
-        self.comboURL.setItemText(1, QtGui.QApplication.translate("CSW_Explorer", "http://www.juntadeandalucia.es/medioambiente/geoinspire/servicios/srv/es/csw?", None, QtGui.QApplication.UnicodeUTF8))
-        self.comboURL.setItemText(2, QtGui.QApplication.translate("CSW_Explorer", "http://www.ideandalucia.es/catalogodeservicios/srv/es/csw?", None, QtGui.QApplication.UnicodeUTF8))
-        self.comboURL.setItemText(3, QtGui.QApplication.translate("CSW_Explorer", "http://www.magrama.es/ide/metadatos/srv/es/csw?", None, QtGui.QApplication.UnicodeUTF8))
-        self.CSWInfoLabel.setText(QtGui.QApplication.translate("CSW_Explorer", "Waiting for a search!", None, QtGui.QApplication.UnicodeUTF8))
-        self.RequestsLabel.setText(QtGui.QApplication.translate("CSW_Explorer", "Requests:", None, QtGui.QApplication.UnicodeUTF8))
-        self.RecordsLabel.setText(QtGui.QApplication.translate("CSW_Explorer", "Records:", None, QtGui.QApplication.UnicodeUTF8))
-        self.labelCSWURL.setText(QtGui.QApplication.translate("CSW_Explorer", "CSW", None, QtGui.QApplication.UnicodeUTF8))
-        self.labelKeyword.setText(QtGui.QApplication.translate("CSW_Explorer", "Keyword(s)", None, QtGui.QApplication.UnicodeUTF8))
-        self.keywordTxt.setToolTip(QtGui.QApplication.translate("CSW_Explorer", "Enter keywords separated by a space", None, QtGui.QApplication.UnicodeUTF8))
-        self.maxRecordsSpinBox.setToolTip(QtGui.QApplication.translate("CSW_Explorer", "Maximum records to show", None, QtGui.QApplication.UnicodeUTF8))
+        CSW_Explorer.setWindowTitle(_translate("CSW_Explorer", "CSW explorer", None))
+        self.exploreButton.setText(_translate("CSW_Explorer", "Explore", None))
+        self.comboURL.setItemText(0, _translate("CSW_Explorer", "http://www.magrama.es/ide/metadatos/srv/es/csw?", None))
+        self.comboURL.setItemText(1, _translate("CSW_Explorer", "http://www.juntadeandalucia.es/medioambiente/geoinspire/servicios/srv/es/csw?", None))
+        self.comboURL.setItemText(2, _translate("CSW_Explorer", "http://www.ideandalucia.es/catalogodeservicios/srv/es/csw?", None))
+        self.comboURL.setItemText(3, _translate("CSW_Explorer", "http://www.fao.org/geonetwork/srv/en/csw?", None))
+        self.CSWInfoLabel.setText(_translate("CSW_Explorer", "Waiting for a search!", None))
+        self.RequestsLabel.setText(_translate("CSW_Explorer", "Requests:", None))
+        self.RecordsLabel.setText(_translate("CSW_Explorer", "Records:", None))
+        self.labelCSWURL.setText(_translate("CSW_Explorer", "CSW", None))
+        self.labelKeyword.setText(_translate("CSW_Explorer", "Keyword(s)", None))
+        self.keywordTxt.setToolTip(_translate("CSW_Explorer", "Enter keywords separated by a space", None))
+        self.maxRecordsSpinBox.setToolTip(_translate("CSW_Explorer", "Maximum records to show", None))
+        self.exploreAllButton.setText(_translate("CSW_Explorer", "Explore all records!", None))
 

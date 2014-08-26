@@ -59,6 +59,9 @@ class CSW_Explorer:
 
         # Create the dock dialog (after translation) and keep reference
         self.dockdlg = CSW_ExplorerDialog()
+        
+        #Total records var
+        self.totalrecords = 0
 
     def initGui(self):
         # Create action that will start plugin configuration
@@ -77,6 +80,10 @@ class CSW_Explorer:
 
         # Connecting actions and functions (signals and slots)
         QObject.connect(self.dockdlg.exploreButton, SIGNAL("clicked()"), self.exploreCSW)
+        QObject.connect(self.dockdlg.exploreAllButton, SIGNAL("clicked()"), self.exploreAllCSW)
+        
+        #Disable Explore all records button
+        self.dockdlg.disableExploreAllButton()
 
     def unload(self):
         # Remove the plugin menu item and icon
@@ -89,12 +96,12 @@ class CSW_Explorer:
     
     def changeInfoLabel(self, text_output):
         self.dockdlg.setInfoLabel(text_output)
-
-    def exploreCSW(self):
+    
+    def getRecords(self, maxrecordstoshow):
         """
-        Explore a CSW catalog
+        Get records in a CSW catalog
             
-            Examples:
+            CSW examples:
             
                 csw_list = [
                 "http://www.magrama.es/ide/metadatos/srv/es/csw?",
@@ -106,7 +113,7 @@ class CSW_Explorer:
         
         self.dockdlg.clearTextRecords()
         self.dockdlg.clearTextRequests()
-
+        
         cswRecords = ""
         cswRequests = ""
         
@@ -122,8 +129,6 @@ class CSW_Explorer:
                 keywords = self.dockdlg.getKeyword()
                 # Set the catalog web service
                 csw = CatalogueServiceWeb(csw_catalog)
-                # Set a maximum number of records to retrieve
-                maxrecordstoshow = self.dockdlg.getMaxRecordToShow()
                 # Getting records...
                 csw.getrecords(keywords=keywords.split(), maxrecords=maxrecordstoshow)
                 
@@ -137,12 +142,46 @@ class CSW_Explorer:
                     # listing records titles
                     cswRecords += "- %s\n" % (csw.records[rec].title)
                 
-                self.changeInfoLabel("Results: %s  /  Showed: %s" % (csw.results['matches'], csw.results['returned']))
+                self.iface.messageBar().pushMessage("Finished search for: ", csw_catalog, duration=4)
+                
+                res_matches = csw.results['matches']
+                res_returned = csw.results['returned']
+                
+                self.changeInfoLabel("Results: %s  /  Showed: %s" % (res_matches, res_returned))
                 self.dockdlg.setTextRecords(cswRecords)
                 self.dockdlg.setTextRequests(cswRequests)
-                
-                self.iface.messageBar().pushMessage("Finished search for: ", csw_catalog, duration=4)
+        
+                return res_matches, res_returned
+
             except:
                 self.iface.messageBar().pushMessage("Error", "Enter a valid CSW URL", level=QgsMessageBar.CRITICAL)
                 self.changeInfoLabel("Enter a valid CSW URL")
+
+    def exploreCSW(self):
+        """
+        Explore a CSW catalog
+
+        """
+        
+        # Set a maximum number of records to retrieve
+        maxrecordstoshow = self.dockdlg.getMaxRecordToShow()
+        res_matches, res_returned = self.getRecords(maxrecordstoshow)
+        
+        if res_matches > res_returned:
+            #Enable Explore all records button
+            self.dockdlg.enableExploreAllButton()
+            self.totalrecords = res_matches
+    
+    def exploreAllCSW(self):
+        """
+        Explore all records...
+        
+        If there are more match records than maximum records to show
+        you can use this functionality
+
+        """
+        self.getRecords(self.totalrecords)
+        
+        #Disable Explore all records button
+        self.dockdlg.disableExploreAllButton()
 

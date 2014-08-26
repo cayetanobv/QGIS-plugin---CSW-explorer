@@ -54,3 +54,9 @@ class CSW_ExplorerDialog(QtGui.QDockWidget, Ui_CSW_Explorer):
     
     def setInfoLabel(self, text_output):
         self.CSWInfoLabel.setText(text_output)
+    
+    def enableExploreAllButton(self):
+        self.exploreAllButton.setEnabled(True)
+    
+    def disableExploreAllButton(self):
+        self.exploreAllButton.setEnabled(False)
