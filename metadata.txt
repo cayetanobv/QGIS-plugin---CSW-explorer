@@ -13,7 +13,7 @@ name=CSW Explorer
 qgisMinimumVersion=2.0
 description=Retrieving info from a CSW with OWSLib
 version=0.1
-author=Geographica
+author=Cayetano Benavent
 email=cayetano.benavent@geographica.gs
 
 # end of mandatory metadata
@@ -28,7 +28,7 @@ tags=CSW, OGC, Catalog, Web Service
 
 homepage=https://www.geographica.gs
 tracker=
-repository=
+repository=https://github.com/cayetanobv/QGIS-plugin---CSW-explorer
 icon=icon.png
 # experimental flag
 experimental=False
