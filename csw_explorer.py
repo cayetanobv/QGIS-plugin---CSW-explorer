@@ -32,6 +32,7 @@ import resources_rc
 from csw_explorerdialog import CSW_ExplorerDialog
 
 # Import Python built-in libraries
+import sys
 import os.path
 
 # Import other libraries
@@ -124,39 +125,35 @@ class CSW_Explorer:
             self.iface.messageBar().pushMessage("Warning", "Enter a valid CSW URL", level=QgsMessageBar.WARNING)
             self.changeInfoLabel("There is not a CSW URL")
         else:
-            try:
-                # If there is a keyword, will be used
-                keywords = self.dockdlg.getKeyword()
-                # Set the catalog web service
-                csw = CatalogueServiceWeb(csw_catalog)
-                # Getting records...
-                csw.getrecords(keywords=keywords.split(), maxrecords=maxrecordstoshow)
-                
-                #osw_type = csw.identification.type
-                
-                for op in csw.operations:
-                    # listing available operations
-                    cswRequests += "- %s\n" % (op.name)
-                            
-                for rec in csw.records:
-                    # listing records titles
-                    cswRecords += "- %s\n" % (csw.records[rec].title)
-                
-                self.iface.messageBar().pushMessage("Finished search for: ", csw_catalog, duration=4)
-                
-                res_matches = csw.results['matches']
-                res_returned = csw.results['returned']
-                
-                self.changeInfoLabel("Results: %s  /  Showed: %s" % (res_matches, res_returned))
-                self.dockdlg.setTextRecords(cswRecords)
-                self.dockdlg.setTextRequests(cswRequests)
-        
-                return res_matches, res_returned
+            # If there is a keyword, will be used
+            keywords = self.dockdlg.getKeyword()
+            # Set the catalog web service
+            csw = CatalogueServiceWeb(csw_catalog, timeout=300)
+            
+            # Getting records...
+            csw.getrecords(keywords=keywords.split(), maxrecords=maxrecordstoshow)
+            
+            #osw_type = csw.identification.type
+            
+            for op in csw.operations:
+                # listing available operations
+                cswRequests += "- %s\n" % (op.name)
+                        
+            for rec in csw.records:
+                # listing records titles
+                cswRecords += "- %s\n" % (csw.records[rec].title)
+            
+            self.iface.messageBar().pushMessage("Finished search for: ", csw_catalog, duration=4)
+            
+            res_matches = csw.results['matches']
+            res_returned = csw.results['returned']
+            
+            self.changeInfoLabel("Results: %s  /  Showed: %s" % (res_matches, res_returned))
+            self.dockdlg.setTextRecords(cswRecords)
+            self.dockdlg.setTextRequests(cswRequests)
 
-            except:
-                self.iface.messageBar().pushMessage("Error", "Enter a valid CSW URL", level=QgsMessageBar.CRITICAL)
-                self.changeInfoLabel("Enter a valid CSW URL")
-
+            return res_matches, res_returned
+            
     def exploreCSW(self):
         """
         Explore a CSW catalog
@@ -165,12 +162,19 @@ class CSW_Explorer:
         
         # Set a maximum number of records to retrieve
         maxrecordstoshow = self.dockdlg.getMaxRecordToShow()
-        res_matches, res_returned = self.getRecords(maxrecordstoshow)
         
-        if res_matches > res_returned:
-            #Enable Explore all records button
-            self.dockdlg.enableExploreAllButton()
-            self.totalrecords = res_matches
+        try:
+            res_matches, res_returned = self.getRecords(maxrecordstoshow)
+            
+            if res_matches > res_returned:
+                #Enable Explore all records button
+                self.dockdlg.enableExploreAllButton()
+                self.totalrecords = res_matches
+            
+        except:
+            exc_type, exc_value, exc_traceback = sys.exc_info()
+            self.iface.messageBar().pushMessage("Error", str(exc_value), level=QgsMessageBar.CRITICAL)
+            self.changeInfoLabel("Enter a valid CSW URL!")
     
     def exploreAllCSW(self):
         """
@@ -180,8 +184,16 @@ class CSW_Explorer:
         you can use this functionality
 
         """
-        self.getRecords(self.totalrecords)
+        
+        try:
+            self.getRecords(self.totalrecords)
+
+        except:
+            exc_type, exc_value, exc_traceback = sys.exc_info()
+            self.iface.messageBar().pushMessage("Error", str(exc_value), level=QgsMessageBar.CRITICAL)
+            self.changeInfoLabel("Enter a valid CSW URL!")
         
         #Disable Explore all records button
         self.dockdlg.disableExploreAllButton()
+
 

@@ -22,208 +22,162 @@
    <string>CSW explorer</string>
   </property>
   <widget class="QWidget" name="dockWidgetContents">
-   <widget class="QPushButton" name="exploreButton">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>570</y>
-      <width>211</width>
-      <height>27</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Explore</string>
-    </property>
-   </widget>
-   <widget class="QTextBrowser" name="CSWRecordsTxt">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>270</y>
-      <width>281</width>
-      <height>291</height>
-     </rect>
-    </property>
-    <property name="maximumSize">
-     <size>
-      <width>16777215</width>
-      <height>16777215</height>
-     </size>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>8</pointsize>
-     </font>
-    </property>
-   </widget>
-   <widget class="QComboBox" name="comboURL">
-    <property name="geometry">
-     <rect>
-      <x>50</x>
-      <y>22</y>
-      <width>241</width>
-      <height>27</height>
-     </rect>
-    </property>
-    <property name="minimumSize">
-     <size>
-      <width>141</width>
-      <height>0</height>
-     </size>
-    </property>
-    <property name="editable">
-     <bool>true</bool>
-    </property>
+   <layout class="QVBoxLayout" name="verticalLayout">
     <item>
-     <property name="text">
-      <string>http://www.magrama.es/ide/metadatos/srv/es/csw?</string>
-     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout_2">
+      <item>
+       <widget class="QLabel" name="labelCSWURL">
+        <property name="text">
+         <string>CSW</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QComboBox" name="comboURL">
+        <property name="minimumSize">
+         <size>
+          <width>141</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="editable">
+         <bool>true</bool>
+        </property>
+        <item>
+         <property name="text">
+          <string>http://www.magrama.es/ide/metadatos/srv/es/csw?</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>http://www.juntadeandalucia.es/medioambiente/geoinspire/servicios/srv/es/csw?</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>http://www.ideandalucia.es/catalogodeservicios/srv/es/csw?</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>http://www.fao.org/geonetwork/srv/en/csw?</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+     </layout>
     </item>
     <item>
-     <property name="text">
-      <string>http://www.juntadeandalucia.es/medioambiente/geoinspire/servicios/srv/es/csw?</string>
-     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout_3">
+      <item>
+       <widget class="QLabel" name="labelKeyword">
+        <property name="text">
+         <string>Keyword(s)</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="keywordTxt">
+        <property name="toolTip">
+         <string>Enter keywords separated by a space</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
     </item>
     <item>
-     <property name="text">
-      <string>http://www.ideandalucia.es/catalogodeservicios/srv/es/csw?</string>
-     </property>
+     <widget class="QLabel" name="CSWInfoLabel">
+      <property name="text">
+       <string>Waiting for a search!</string>
+      </property>
+      <property name="textFormat">
+       <enum>Qt::PlainText</enum>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
     </item>
     <item>
-     <property name="text">
-      <string>http://www.fao.org/geonetwork/srv/en/csw?</string>
-     </property>
+     <widget class="QLabel" name="RequestsLabel">
+      <property name="text">
+       <string>Requests:</string>
+      </property>
+     </widget>
     </item>
-   </widget>
-   <widget class="QLabel" name="CSWInfoLabel">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>120</y>
-      <width>271</width>
-      <height>17</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Waiting for a search!</string>
-    </property>
-    <property name="textFormat">
-     <enum>Qt::PlainText</enum>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
-    </property>
-   </widget>
-   <widget class="QTextBrowser" name="CSWRequestsTxt">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>170</y>
-      <width>281</width>
-      <height>61</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QLabel" name="RequestsLabel">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>150</y>
-      <width>66</width>
-      <height>17</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Requests:</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="RecordsLabel">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>250</y>
-      <width>66</width>
-      <height>17</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Records:</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="labelCSWURL">
-    <property name="geometry">
-     <rect>
-      <x>12</x>
-      <y>22</y>
-      <width>32</width>
-      <height>17</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>CSW</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="labelKeyword">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>60</y>
-      <width>81</width>
-      <height>17</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Keyword(s)</string>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="keywordTxt">
-    <property name="geometry">
-     <rect>
-      <x>90</x>
-      <y>60</y>
-      <width>201</width>
-      <height>27</height>
-     </rect>
-    </property>
-    <property name="toolTip">
-     <string>Enter keywords separated by a space</string>
-    </property>
-   </widget>
-   <widget class="QSpinBox" name="maxRecordsSpinBox">
-    <property name="geometry">
-     <rect>
-      <x>230</x>
-      <y>570</y>
-      <width>60</width>
-      <height>27</height>
-     </rect>
-    </property>
-    <property name="toolTip">
-     <string>Maximum records to show</string>
-    </property>
-    <property name="minimum">
-     <number>1</number>
-    </property>
-    <property name="maximum">
-     <number>1000000</number>
-    </property>
-    <property name="value">
-     <number>50</number>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="exploreAllButton">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>600</y>
-      <width>281</width>
-      <height>27</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Explore all records!</string>
-    </property>
-   </widget>
+    <item>
+     <widget class="QTextBrowser" name="CSWRequestsTxt">
+      <property name="maximumSize">
+       <size>
+        <width>16777215</width>
+        <height>50</height>
+       </size>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLabel" name="RecordsLabel">
+      <property name="text">
+       <string>Records:</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QTextBrowser" name="CSWRecordsTxt">
+      <property name="maximumSize">
+       <size>
+        <width>16777215</width>
+        <height>16777215</height>
+       </size>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>8</pointsize>
+       </font>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <widget class="QPushButton" name="exploreButton">
+        <property name="text">
+         <string>Explore</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QSpinBox" name="maxRecordsSpinBox">
+        <property name="maximumSize">
+         <size>
+          <width>75</width>
+          <height>16777215</height>
+         </size>
+        </property>
+        <property name="toolTip">
+         <string>Maximum records to show</string>
+        </property>
+        <property name="minimum">
+         <number>1</number>
+        </property>
+        <property name="maximum">
+         <number>1000000</number>
+        </property>
+        <property name="value">
+         <number>50</number>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <widget class="QPushButton" name="exploreAllButton">
+      <property name="text">
+       <string>Explore all records!</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
   </widget>
  </widget>
  <resources/>
