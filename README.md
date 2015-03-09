@@ -16,4 +16,4 @@ $ pip search OWSlib
 ##About author
 Developed by Cayetano Benavent 2014.
 
-http://www.geographica.gs/#!/en/geographica/team
+http://www.geographica.gs
